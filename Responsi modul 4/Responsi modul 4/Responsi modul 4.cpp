@@ -10,7 +10,12 @@ void enskripsi() {
 	int key = 7;
 	int i;
 	for (i = 0; i < kata; i+= 1) {
-		asal[i] = (asal[i] + key);
+		if (int(asal[i]) > 115) {
+			asal[i] = (asal[i] + key) - 26;
+		}
+		else {
+			asal[i] = (asal[i] + key);
+		}
 	}
 }
 
@@ -20,7 +25,12 @@ public:
 		int key = 7;
 		int i;
 		for (i = 0; i < kata; i += 1) {
-			asal[i] = (asal[i] - key);
+			if (int(asal[i]) < 103) {
+				asal[i] = (asal[i] + 19);
+			}
+			else {
+				asal[i] = (asal[i] - key);
+			}
 		}
 	}
 };
@@ -59,6 +69,7 @@ int main() {
 		for (i = 0; i < kata; i += 1) {
 			cout << asal[i];
 		}
+		cout << endl;
 		goto menu;
 	}
 }
