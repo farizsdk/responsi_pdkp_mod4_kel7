@@ -3,14 +3,18 @@
 using namespace std;
 char asal[100];
 char hasil[100];
-string huruf = "abcdefghijklmnopqrstuvwxyz";
 int kata;
 
 void enskripsi() {
 	int key = 7;
 	int i;
 	for (i = 0; i < kata; i+= 1) {
-		asal[i] = (asal[i] + key);
+		if (int(asal[i]) > 115) {
+			asal[i] = (asal[i] + key) - 26;
+		}
+		else {
+			asal[i] = (asal[i] + key);
+		}
 	}
 }
 
@@ -20,7 +24,12 @@ public:
 		int key = 7;
 		int i;
 		for (i = 0; i < kata; i += 1) {
-			asal[i] = (asal[i] - key);
+			if (int(asal[i]) < 103) {
+				asal[i] = (asal[i] + 19);
+			}
+			else {
+				asal[i] = (asal[i] - key);
+			}
 		}
 	}
 };
@@ -33,6 +42,7 @@ int main() {
 	cout << "Silahkan pilih menu dibawah ini: " << endl;
 	cout << "1.Enkripsi kata" << endl;
 	cout << "2.Dekripsi kata" << endl;
+	cout << "3.Keluar" << endl;
 	cout << "Masukkan nomor: ";
 	cin >> pilihan;
 	switch (pilihan) {
@@ -59,6 +69,13 @@ int main() {
 		for (i = 0; i < kata; i += 1) {
 			cout << asal[i];
 		}
+		cout << endl;
+		goto menu;
+	case 3:
+		cout << "Terimakasih telah menggunakan program ini";
+		break;
+	default:
+		cout << "Nomor yang anda masukkan salah. Coba lagi"<<endl;
 		goto menu;
 	}
 }
