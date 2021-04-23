@@ -1,0 +1,2 @@
+git config --global  user.name "farizsdk"
+git config --global  user.email ”justfariz64@gmail.com”
